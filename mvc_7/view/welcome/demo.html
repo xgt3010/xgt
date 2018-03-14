@@ -1,0 +1,70 @@
+<style>
+table{ border-collapse: collapse; border: 1px solid #ddd; width: 500px; margin: 0 auto;margin-top: 50px; background: rgba(121, 217, 221, 0.4); color: #666}
+table tr{ height: 40px;}
+table td{ border: 1px solid #ddd; text-align: center}
+
+*{margin: 0; padding:0 ; font-family: 微软雅黑}
+
+.top{ width: 100%; background: rgba(14, 196, 210, 0.99); color: #fff; height: 100px; line-height: 150px; text-align: right;}
+.top span{ margin-right: 20px}
+
+
+.left{ width: 260px; float: left; height: 100%; background: rgba(121, 217, 221, 0.4)}
+.left ul{ list-style: none; width: 100%;}
+.left ul li{ height: 40px; width: 100%; border: 1px solid #ddd; line-height: 40px; text-align: center;}
+.left .selected{ background: rgba(14, 196, 210, 0.99); color: #fff}
+
+
+.right{ float: left; width: 1020px;}
+.page-title{ margin-left: 10px; margin-top: 5px; font-size: 12px; color: rgba(14, 196, 210, 0.99)}
+.title{ background: rgba(14, 196, 210, 0.99); color: #fff}
+.search-box{ width: 500px; margin: 0 auto; margin-top: 100px; }
+.search-input{ width: 350px; height: 40px; border: 1px solid #999; border-radius: 3px; font-size: 14px; padding-left: 5px; vertical-align: middle; margin-left: 25px;}
+.search-button{ width: 100px; height: 38px; border: 1px solid #999; border-radius: 3px; text-decoration: none; display: inline-block; vertical-align: middle; text-align: center; line-height: 38px; color: #fff; background: #666}
+</style>
+<div class="top">
+    <span>欢迎管理员：admin</span>
+</div>
+<!-- <div class="left">
+    <ul>
+        <li>用户列表</li>
+        <li>商品列表</li>
+        <li>订单列表</li>
+        <li class="selected">访问统计</li>
+        <li>网站设置</li>
+    </ul>
+</div> -->
+<div class="right">
+<div class="page-title">首页>>访问统计</div>
+<div class="search-box">
+    <input type="text" class="search-input va" placeholder="请输入要搜索的IP" >
+    <a class="search-button cha" href="javascript:;">搜索</a>
+
+    <table>
+        <tr class="title">
+            <td colspan="2">访问次数前三的IP</td>
+        </tr>
+        <tr>
+            <td>IP地址</td>
+            <td>访问次数</td>
+        </tr>
+        <?php foreach($ip as $v) { ?>
+        <tr>
+            <td><?= $v['name']?></td>
+            <td><?= $v['num']?></td>
+        </tr>
+      <?php }?>
+    </table>
+</div>
+</div>
+<script type="text/javascript" src="<?= PUBLIC_DIR.'/jquery.js'?>"></script>
+<script type="text/javascript">
+
+    $('.cha').click(function()
+    {
+        var val=$('.va').val();
+        location.href="<?= URL.'/welcome/cha?val='?>"+val;
+
+    })
+
+</script>
